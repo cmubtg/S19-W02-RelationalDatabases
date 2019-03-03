@@ -26,3 +26,35 @@ VALUES
     ('sbala', 'Sandhya Bala', 'Computer Science', 'Sophomore', 'Data Scientist', 'External Analytics II'),
     ('kouyang', 'Kevin Ouyang', 'Economics and Statistics', 'Junior', 'Data Scientist', 'External Analytics I')
 ;
+
+-- queries
+-- Perform a sanity check on the data. --
+SELECT count(*)
+  FROM Members
+ WHERE role = "Data Analyst";
+
+-- Find the person next to you. --
+SELECT *
+  FROM Members
+ WHERE full_name = "Denis Ebby";
+
+-- Find all the people in your major. --
+SELECT *
+  FROM Members
+ WHERE primary_major = "Information Systems";
+
+-- Find the number of people in each major. --
+SELECT primary_major, count(primary_major) AS major_count
+  FROM Members
+ GROUP BY primary_major
+ ORDER BY major_count DESC;
+
+-- How many underclassmen are in the division? --
+SELECT count(*)
+  FROM Members
+ WHERE school_year = "Freshman" OR school_year = "Sophomore";
+
+-- Is there anyone else with your major and role? --
+SELECT *
+  FROM Members
+ WHERE primary_major = "Information Systems" AND role = "Data Scientist";
